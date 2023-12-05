@@ -1,23 +1,23 @@
 import React from 'react';
 import { Button, Form, FormGroup, Modal, Row, Col } from 'react-bootstrap';
-import { addTask } from '../services/TaskService';
+import { updateTask } from '../services/TaskService';
 
-const addTaskModal = (props) => {
+const updateTaskModal = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addTask(e.target).then((result) => {
+        updateTask(props.task.taskId, e.target).then((result) => {
             alert(result);
             props.setUpdated(true);
         }, (error) => {
-            alert("Failed to add task!");
+            alert("Failed to update task!");
         });
     };
     return (
         <div className='container'>
             <Modal {...props} size="lg" centered>
                 <Modal.Header closeButton>
-                    <Modal.Title>Add New Task</Modal.Title>
+                    <Modal.Title>Update Task</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
@@ -26,15 +26,15 @@ const addTaskModal = (props) => {
                             <Form onSubmit={handleSubmit}>
                                 <Form.Group controlId="title">
                                     <Form.Label>Title</Form.Label>
-                                    <Form.Control type="text" name='title' required placeholder=''></Form.Control>
+                                    <Form.Control type="text" name='title' required defaultValue={props.task.title} placeholder=''></Form.Control>
                                 </Form.Group>
                                 <Form.Group controlId="description">
                                     <Form.Label>Description</Form.Label>
-                                    <Form.Control type="text" name='description' required placeholder=''></Form.Control>
+                                    <Form.Control type="text" name='description' required defaultValue={props.task.description} placeholder=''></Form.Control>
                                 </Form.Group>
                                 <Form.Group controlId="expiration_date">
                                     <Form.Label>Expiration Day</Form.Label>
-                                    <Form.Control type="date" name='expiration_date' required placeholder=''></Form.Control>
+                                    <Form.Control type="date" name='expiration_date' required defaultValue={props.task.expiration_date} placeholder=''></Form.Control>
                                 </Form.Group>
 
                                 <Form.Group controlId="expiration_date">
@@ -54,4 +54,4 @@ const addTaskModal = (props) => {
     );
 };
 
-export default addTaskModal;
+export default updateTaskModal;

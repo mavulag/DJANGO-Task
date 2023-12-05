@@ -4,3 +4,10 @@ html {
   width: 100%;
   margin: 0;
 }
+
+.sidebar {
+  display: flex;
+  height: 100vh;
+  float: left;
+  overflow: 'scroll initial';
+}

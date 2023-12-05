@@ -1,0 +1,10 @@
+body {
+  font: 14px "Century Gothic", Fatura, sans-sarif;
+  margin: 0;
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
